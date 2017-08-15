@@ -3,18 +3,43 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
 from pylab import *
+import sys
 
-driver = webdriver.PhantomJS(executable_path=r'C:\FYS\DIV\phantomjs-2.1.1-windows\bin\phantomjs.exe')
 
-driver.get('https://www.oslobors.no/markedsaktivitet/#/details/OSEBX.OSE/overview')
-#driver.get('https://www.oslobors.no/markedsaktivitet/#/details/ATEA.OSE/overview')
 
-def bors():
+tickers = ['AFG','AKER','AKERBP','AKSO','ASETEK','ATEA',
+ 'AXA','B2H','BAKKA','DNB','DNO','EKO','ENTRA',
+ 'EPR','FRO','GIG','GJF','GOGL','GSF','HEX','IDEX',
+ 'KIT','KOA','KOG','LSG','LINK','MHG','NEXT','NANO',
+ 'NOD','NHY','NAS','NPRO','OLT','OPERA','ORK','PGS',
+ 'PHO','REC','SALM','SSO','SCHA','SCHB','SDRL','SRBANK',
+ 'STL','SNI','STB','SUBC','TEL','TGS160','THIN','TOM',
+ 'TRE','VEI','WWL','WEIFA','WWI','WWIB','XXL','YAR']
+
+try:
+    ticker = sys.argv[1]
+except IndexError:
+    print "Use one of these tickers:\n"
+    for ticker in tickers:
+        print ticker
+    ticker = raw_input('\nEnter ticker:\n')
+        
+
+if ticker in tickers:
     
+    site = 'https://www.oslobors.no/markedsaktivitet/#/details/%s.OSE/overview' % ticker
+    
+    driver = webdriver.PhantomJS(executable_path=r'C:\FYS\DIV\phantomjs-2.1.1-windows\bin\phantomjs.exe')
+
+    
+def bors(site):
+    
+    driver.get(site)
     time.sleep(5)
     pageSource = driver.page_source
     
     page = BeautifulSoup(pageSource, 'lxml')
+    
     
     try:
         chart = page.find('g',{'class':'highcharts-series highcharts-series-0'})
@@ -23,7 +48,6 @@ def bors():
         low = page.find('td',{'class':'number LOW'})
     except ValueError:
         bors()
-    
     
     siste = siste.get_text()
     siste = float(siste.replace(',','.'))
@@ -84,9 +108,10 @@ def bors():
             pass
         i += 1
         
+    figname = 'Chart for %s' % ticker
     
     figure()
-    title('Chart')
+    title(figname)
     plot(x[:count],360-y[:count])
     grid(True)
     show()
@@ -103,6 +128,6 @@ def bors():
     
     driver.close()
 
-bors()#for last in sisteList:
+bors(site)#for last in sisteList:
 #    print(last)
 #lage try catch - format figure - lage funksjon
