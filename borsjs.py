@@ -112,7 +112,7 @@ def bors(site):
     print diff
     figure()
     title(figname)
-    plot(x[:count],high-y[:count]*(3./360))
+    plot(x[:count],high-y[:count]*(1.25/360))
     grid(True)
     show()
     
