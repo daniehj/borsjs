@@ -1,4 +1,4 @@
-## borsjs
+# borsjs
 
 A script for reading stockprices with ticker, uses PhantomJS
 
