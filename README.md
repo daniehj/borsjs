@@ -9,10 +9,10 @@ Download file and install PhantomJS
 ### Prerequisites
 
 For running borsjs you need:
-Urllib2
-BeatifulSoup
-Selenium
-Pylab
+Urllib2,
+BeatifulSoup,
+Selenium,
+Pylab,
 
 Also need PhantomJS installed
 
@@ -20,7 +20,7 @@ Also need PhantomJS installed
 
 ### Installing
 
-For installing the python modules you nedd
+To install the python modules:
 
 ```
 pip install urllib2, bs4, selenium, pylab
@@ -68,6 +68,4 @@ High: 734.45
 Low: 730.53
 
 ```
-
-Screenshots
 
