@@ -7,13 +7,13 @@ import sys
 
 
 
-tickers = ['AFG','AKER','AKERBP','AKSO','ASETEK','ATEA',
+tickers = ['OSEBX','AFG','AKER','AKERBP','AKSO','ASETEK','ATEA',
  'AXA','B2H','BAKKA','DNB','DNO','EKO','ENTRA',
  'EPR','FRO','GIG','GJF','GOGL','GSF','HEX','IDEX',
  'KIT','KOA','KOG','LSG','LINK','MHG','NEXT','NANO',
  'NOD','NHY','NAS','NPRO','OLT','OPERA','ORK','PGS',
  'PHO','REC','SALM','SSO','SCHA','SCHB','SDRL','SRBANK',
- 'STL','SNI','STB','SUBC','TEL','TGS160','THIN','TOM',
+ 'STL','SNI','STB','SUBC','TEL','TGS','THIN','TOM',
  'TRE','VEI','WWL','WEIFA','WWI','WWIB','XXL','YAR']
 
 try:
@@ -56,7 +56,7 @@ def bors(site):
     low = low.get_text()
     low = float(low.replace(',','.'))
     
-    diff = high-low
+    diff = high - low
     
     
     
@@ -107,18 +107,38 @@ def bors(site):
         else:
             pass
         i += 1
-        
+    
+    toppx = 360-min(y[0:count])
+    botpx = 360-max(y[0:count])
+    
+    diffpx = toppx-botpx
+    
+    y = high - y[:count]*(diff/diffpx)
+    x = x[:count]
+    
+    offset = high - max(y)
+    
+    
+    
+    
     figname = 'Chart for %s' % ticker
 
     figure()
     title(figname)
-    plot(x[:count],high-y[:count]*((1.25*diff)/360))
+    plot(x, y + offset)
     grid(True)
     show()
     
-    #print y[0:20]
+    figname = 'Histogram for %s' % ticker
     
-    FFT = abs(fft(y[0:count]))
+    figure()
+    title(figname)
+    hist(y)
+    grid(True)
+    show()
+    
+
+    FFT = abs(fft(y))
     
     figure()
     title('FFT of the chart')
