@@ -69,4 +69,9 @@ Low: 730.53
 
 ```
 
-And plots 3 plots: Full Chart, Histogram and FFT
+And plots 3 plots:
+
+Full Chart: https://github.com/daniehj/borsjs/raw/master/chartosebx.png
+Histogram: https://github.com/daniehj/borsjs/raw/master/histosebx.png
+FFT of fll chart: https://github.com/daniehj/borsjs/raw/master/fftosebx.png
+
