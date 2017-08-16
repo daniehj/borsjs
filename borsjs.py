@@ -109,7 +109,7 @@ def bors(site):
         i += 1
         
     figname = 'Chart for %s' % ticker
-    print diff
+
     figure()
     title(figname)
     plot(x[:count],high-y[:count]*((1.25*diff)/360))
@@ -128,6 +128,4 @@ def bors(site):
     
     driver.close()
 
-bors(site)#for last in sisteList:
-#    print(last)
-#lage try catch - format figure - lage funksjon
+bors(site)
