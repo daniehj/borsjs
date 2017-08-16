@@ -69,3 +69,4 @@ Low: 730.53
 
 ```
 
+And plots 3 plots: Full Chart, Histogram and FFT
