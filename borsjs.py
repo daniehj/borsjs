@@ -89,7 +89,7 @@ def bors(site):
     x = zeros(int((len(l)/2.))+1)
     y = zeros(len(x))
     
-    
+   
     
     for num in range(len(l)):
         if num % 2 == 0:
@@ -109,10 +109,10 @@ def bors(site):
         i += 1
         
     figname = 'Chart for %s' % ticker
-    
+    print diff
     figure()
     title(figname)
-    plot(x[:count],360-y[:count])
+    plot(x[:count],high-y[:count]*(3./360))
     grid(True)
     show()
     
