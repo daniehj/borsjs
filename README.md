@@ -22,13 +22,13 @@ Also need PhantomJS installed
 
 To install the python modules:
 
-```
+```python
 pip install urllib2, bs4, selenium, pylab
 ```
 
 For the phantomJS module you need to download the driver from homepage, then set
 
-```
+```python
 driver = webdriver.PhantomJS(executable_path=r'%PHANTOMJS_PATH\bin\phantomjs.exe')
 ```
 
@@ -39,7 +39,7 @@ Also need to set the path in the enviroment variable
 Write ticker in commmandline
 
 ```
->borsjs.oy TEL
+>borsjs.py TEL
 ```
 
 Or no ticker will give a list of tickers, then place ticker name
@@ -62,11 +62,10 @@ ATEA
 Uses commandline-style
 
 ```
->borsjs.oy OSEBX
+>borsjs.py OSEBX
 Siste: 147.50
 High: 734.45
 Low: 730.53
-
 ```
 
 And plots 3 plots:
@@ -74,4 +73,3 @@ And plots 3 plots:
 ![Full chart](https://github.com/daniehj/borsjs/raw/master/chartosebx.png)
 ![Histogram](https://github.com/daniehj/borsjs/raw/master/histosebx.png)
 ![FFT of full chart](https://github.com/daniehj/borsjs/raw/master/fftosebx.png)
-
